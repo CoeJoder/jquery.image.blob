@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<searchresults total_results="3">
+                    <addon id="6180">
+  <name>English (South African) Language Pack</name>
+  <type id="5">Language Pack (Application)</type>
+  <guid>langpack-en-ZA@firefox.mozilla.org</guid>
+  <slug>english-south-african-language</slug>
+  <version>25.0</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="169373">
+      <name>Dwayne Bailey</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/dwayne-bailey/?src=api</link>
+    </author><author id="182568">
+      <name>Translate.org.za</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/translateorgza/?src=api</link>
+    </author><author id="4757633">
+      <name>Mozilla</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/mozilla/?src=api</link>
+    </author>      </authors>
+  <summary>Adds South African English language support to the Firefox browser. All interfaces will be translated into South African English.</summary>
+  <description>Translation of the Firefox user interface into South African English by &lt;a href=&#34;http://outgoing.mozilla.org/v1/ebf7b3ba66c87e5449a05dcf913d243b92346271/http%3A//translate.org.za.&#34;&gt;http://translate.org.za.&lt;/a&gt;
+
+If you find missing translations or incorrect translations then visit &lt;a href=&#34;http://outgoing.mozilla.org/v1/145f17ae8f2887d14fb2ee13dfd3452575bcb599/http%3A//pootle.translate.org.za&#34;&gt;http://pootle.translate.org.za&lt;/a&gt; and please contribute a correction.</description><license>
+    <name>Custom License</name>
+    <url>http://www.mozilla.org/MPL/MPL-1.1.html</url>
+  </license>  <icon size="64">https://addons.cdn.mozilla.net/img/uploads/addon_icons/6/6180-64.png?modified=1358380391</icon>
+  <icon size="32">https://addons.cdn.mozilla.net/img/uploads/addon_icons/6/6180-32.png?modified=1358380391</icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>25.0</min_version>
+      <max_version>25.0.*</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews></previews><rating>0</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/english-south-african-language/?src=api</learnmore><install hash="sha256:2cadd7338aa8879ea9ce8914d245e4484019acf0137b7071b8eca1146304c6cf"
+    os="ALL"
+    size="349576">https://addons.mozilla.org/firefox/downloads/file/232231/english_south_african_language_pack-25.0-fx.xpi?src=api</install>
+  <developer_comments></developer_comments>
+    <reviews num="0">
+      https://addons.mozilla.org/en-US/firefox/addon/english-south-african-language/reviews/?src=api
+    </reviews>
+    <total_downloads>80712</total_downloads>
+    <weekly_downloads>107</weekly_downloads>
+    <daily_users>80712</daily_users>
+    <created epoch="1197461163">
+      2007-12-12T12:06:03Z
+    </created>
+    <last_updated epoch="1382987517">
+      2013-10-28T19:11:57Z
+    </last_updated>
+    <homepage>http://translate.org.za/content/view/15/31/lang,en/</homepage>
+    <support></support>
+    <featured>0</featured>
+        <performance>
+      </performance>
+    </addon>
+
+                  <addon id="1843">
+  <name>Firebug</name>
+  <type id="1">Extension</type>
+  <guid>firebug@software.joehewitt.com</guid>
+  <slug>firebug</slug>
+  <version>1.12.6</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="9265">
+      <name>Joe Hewitt</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/joe-hewitt/?src=api</link>
+    </author><author id="857086">
+      <name>Jan Odvarko</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/jan-odvarko/?src=api</link>
+    </author><author id="95117">
+      <name>robcee</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/robcee/?src=api</link>
+    </author><author id="4957771">
+      <name>FirebugWorkingGroup</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/firebugworkinggroup/?src=api</link>
+    </author>      </authors>
+  <summary>Firebug integrates with Firefox to put a wealth of development tools at your fingertips while you browse. You can edit, debug, and monitor CSS, HTML, and JavaScript live in any web page...</summary>
+  <description>&lt;a href=&#34;http://outgoing.mozilla.org/v1/fc4997ab3399c96f4fddde69c127a1a7ac4d471f70a11827f5965b04dd3d60a0/https%3A//twitter.com/%23%21/firebugnews&#34; rel=&#34;nofollow&#34;&gt;Follow Firebug news on Twitter&lt;/a&gt;
+
+Compatibility table:
+
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;Firefox 3.6&lt;/strong&gt; with &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/?page=1#version-1.7.3&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.7.3&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 4.0&lt;/strong&gt; with &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/?page=1#version-1.7.3&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.7.3&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 5.0&lt;/strong&gt; with &lt;strong&gt;Firebug 1.8.2&lt;/strong&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/?page=1#version-1.7.3&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.7.3&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 6.0&lt;/strong&gt; with &lt;strong&gt;Firebug 1.8.2&lt;/strong&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 7.0&lt;/strong&gt; with &lt;strong&gt;Firebug 1.8.2&lt;/strong&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 8.0&lt;/strong&gt; with &lt;strong&gt;Firebug 1.8.3&lt;/strong&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 9.0&lt;/strong&gt; with &lt;strong&gt;Firebug 1.8.4&lt;/strong&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 10.0&lt;/strong&gt; with &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 11.0&lt;/strong&gt; with &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 12.0&lt;/strong&gt; with &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 13.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.10&lt;/b&gt; (and also &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/firebug/versions/&#34; rel=&#34;nofollow&#34;&gt;Firebug 1.9&lt;/a&gt;)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 14.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.10&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 15.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.10&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 16.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.10&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 17.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt; (and also Firebug 1.10)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 18.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 19.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 20.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 21.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 22.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.11&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 23.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt; (and also Firebug 1.11)&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 24.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 25.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 26.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 27.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 28.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Firefox 29.0&lt;/strong&gt; with &lt;b&gt;Firebug 1.12&lt;/b&gt;&lt;/li&gt;&lt;/ul&gt;
+Firebug integrates with Firefox to put a wealth of development tools at your fingertips while you browse. You can edit, debug, and monitor CSS, HTML, and JavaScript live in any web page.
+
+Visit the Firebug website for documentation and screen shots: &lt;a href=&#34;http://outgoing.mozilla.org/v1/835dbec6bd77fa1341bf5841171bc90e8a5d4069419f083a25b7f81f9fb254cb/http%3A//getfirebug.com&#34; rel=&#34;nofollow&#34;&gt;http://getfirebug.com&lt;/a&gt;
+Ask questions on Firebug newsgroup: &lt;a href=&#34;http://outgoing.mozilla.org/v1/2398490bb3575c96d4cf9054e4f11236717aa6b9f353f5ada85dd8c74ed0dbbe/https%3A//groups.google.com/forum/%23%21forum/firebug&#34; rel=&#34;nofollow&#34;&gt;https://groups.google.com/forum/#!forum/firebug&lt;/a&gt;
+Report an issue: &lt;a href=&#34;http://outgoing.mozilla.org/v1/82ba7e7d7600d78965967de98579334986246b827dcc5c8a0bcf0ba036ef62dd/http%3A//code.google.com/p/fbug/issues/list&#34; rel=&#34;nofollow&#34;&gt;http://code.google.com/p/fbug/issues/list&lt;/a&gt;
+
+&lt;i&gt;Please note that bug reports or feature requests in comments on this page won&#39;t be tracked. Use the issue tracker or Firebug newsgroup instead thanks!&lt;/i&gt;</description><license>
+    <name>BSD License</name>
+    <url>http://www.opensource.org/licenses/bsd-license.php</url>
+  </license>  <icon size="64">https://addons.cdn.mozilla.net/img/uploads/addon_icons/1/1843-64.png?modified=1390114123</icon>
+  <icon size="32">https://addons.cdn.mozilla.net/img/uploads/addon_icons/1/1843-32.png?modified=1390114123</icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>23.0</min_version>
+      <max_version>29.0</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52710.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52710.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>Command line and its auto-completion.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52711.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52711.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>Console panel with an example error logs.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52712.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52712.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>CSS panel with inline editor.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52713.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52713.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>DOM panel displays structure of the current page.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52714.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52714.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>HTML panel shows markup of the current page.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52715.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52715.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>Layout panel reveals layout of selected elements.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52716.png?src=api&amp;modified=1295279900
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52716.png?src=api&amp;modified=1295279900
+      </thumbnail><caption>Net panel monitors HTTP communication.</caption></preview><preview position="1">
+      <full type="" width="700" height="330">
+        https://addons.cdn.mozilla.net/img/uploads/previews/full/52/52717.png?src=api&amp;modified=1295279901
+      </full>
+      <thumbnail type="" width="200" height="94">
+        https://addons.cdn.mozilla.net/img/uploads/previews/thumbs/52/52717.png?src=api&amp;modified=1295279901
+      </thumbnail><caption>Script panel allows to explore and debug JavaScript on the current page.</caption></preview></previews><rating>5</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/firebug/?src=api</learnmore><install hash="sha256:5a54d321a2dcd8331a238f1676a5b309bfcc483b8137f35c49a5dda3cf64f2f1"
+    os="ALL"
+    size="2197828">https://addons.mozilla.org/firefox/downloads/file/239602/firebug-1.12.6-fx.xpi?src=api</install>
+  <install hash="sha256:72cbb4f5d97926a8da93f2ef8b1744bda3929f99cbcce8c817b9723bf27c9e71" os=""
+             size="2197832"
+             status="Beta">
+      https://addons.mozilla.org/firefox/downloads/file/240179/firebug-1.12.6b1-fx.xpi?src=api
+    </install>
+    <contribution_data>
+      <link>https://addons.mozilla.org/en-US/firefox/addon/firebug/contribute/?src=api</link>
+                <suggested_amount currency="USD" amount="10.00">
+            $10.00
+          </suggested_amount>
+            <meet_developers>
+        https://addons.mozilla.org/en-US/firefox/addon/firebug/developers?src=api
+      </meet_developers>
+    </contribution_data><developer_comments>If you have any problems, please read the Firebug FAQ.
+
+&lt;a href=&#34;http://outgoing.mozilla.org/v1/5ea1894b182489b660d05bbd802d85c912b93d9981fa121194866ff48c71d5d8/https%3A//getfirebug.com/faq&#34; rel=&#34;nofollow&#34;&gt;https://getfirebug.com/faq&lt;/a&gt;</developer_comments>
+    <reviews num="1601">
+      https://addons.mozilla.org/en-US/firefox/addon/firebug/reviews/?src=api
+    </reviews>
+    <total_downloads>64492212</total_downloads>
+    <weekly_downloads>157584</weekly_downloads>
+    <daily_users>3405974</daily_users>
+    <created epoch="1137054450">
+      2006-01-12T08:27:30Z
+    </created>
+    <last_updated epoch="1390056585">
+      2014-01-18T14:49:45Z
+    </last_updated>
+    <homepage>http://getfirebug.com/</homepage>
+    <support>http://getfirebug.com</support>
+    <featured>0</featured>
+        <performance>
+            <application name="fx" version="8.0.1">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="548.47" average="541.42"
+                  above_threshold="false" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="479.26" average="471.95"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.6 (rev4)">
+          <result type="ts" baseline="637.58" average="633.89"
+                  above_threshold="false" />
+        </platform></application>      <application name="fx" version="6.0.2">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="519.79" average="969.42"
+                  above_threshold="true" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="476.21" average="976.21"
+                  above_threshold="true" />
+        </platform>        <platform name="MacOSX" version="10.6.2">
+          <result type="ts" baseline="654.42" average="1160.53"
+                  above_threshold="true" />
+        </platform></application>      <application name="fx" version="7.0.1">
+                <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="479.68" average="964.11"
+                  above_threshold="true" />
+        </platform>        <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="547.16" average="1015.05"
+                  above_threshold="true" />
+        </platform>        <platform name="MacOSX" version="10.6.2 (rev3)">
+          <result type="ts" baseline="667.37" average="1176.47"
+                  above_threshold="true" />
+        </platform>        <platform name="MacOSX" version="10.6.2">
+          <result type="ts" baseline="671.16" average="1177.95"
+                  above_threshold="true" />
+        </platform></application>      <application name="fx" version="8.0">
+                <platform name="WINNT" version="6.1">
+          <result type="ts" baseline="541.58" average="538.47"
+                  above_threshold="false" />
+        </platform>        <platform name="Fedora" version="12 - Constantine">
+          <result type="ts" baseline="477.95" average="481.26"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.6 (rev4)">
+          <result type="ts" baseline="624.84" average="640.79"
+                  above_threshold="false" />
+        </platform>        <platform name="MacOSX" version="10.6.2 (rev3)">
+          <result type="ts" baseline="657.21" average="654.21"
+                  above_threshold="false" />
+        </platform></application></performance>
+    </addon>
+
+                  <addon id="417168">
+  <name>English (GB) Language Pack</name>
+  <type id="5">Language Pack (Application)</type>
+  <guid>langpack-en-GB@firefox.mozilla.org</guid>
+  <slug>english-gb-language-pack</slug>
+  <version>26.0</version>
+  <status id="4">Fully Reviewed</status>
+  <authors>
+        <author id="4757633">
+      <name>Mozilla</name>
+      <link>https://addons.mozilla.org/en-US/firefox/user/mozilla/?src=api</link>
+    </author>      </authors>
+  <summary></summary>
+  <description></description>  <icon size="64"></icon>
+  <icon size="32"></icon>
+  <compatible_applications><application>
+      <name>Firefox</name>
+      <application_id>1</application_id>
+      <min_version>26.0</min_version>
+      <max_version>26.0.*</max_version>
+      <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+    </application></compatible_applications>
+  <all_compatible_os><os>ALL</os></all_compatible_os>
+  <eula></eula><previews></previews><rating>3</rating>
+  <learnmore>https://addons.mozilla.org/en-US/firefox/addon/english-gb-language-pack/?src=api</learnmore><install hash="sha256:acc2eda166c10f71628b8581aa8556f251f73f461ce35ae244fb347e5bb4d9fb"
+    os="ALL"
+    size="353965">https://addons.mozilla.org/firefox/downloads/file/236438/english_gb_language_pack-26.0-fx.xpi?src=api</install>
+  <developer_comments></developer_comments>
+    <reviews num="15">
+      https://addons.mozilla.org/en-US/firefox/addon/english-gb-language-pack/reviews/?src=api
+    </reviews>
+    <total_downloads>194393</total_downloads>
+    <weekly_downloads>4185</weekly_downloads>
+    <daily_users>193786</daily_users>
+    <created epoch="1358459080">
+      2013-01-17T21:44:40Z
+    </created>
+    <last_updated epoch="1386723025">
+      2013-12-11T00:50:25Z
+    </last_updated>
+    <homepage></homepage>
+    <support></support>
+    <featured>0</featured>
+        <performance>
+      </performance>
+    </addon>
+
+          <addon_compatibility
+    hosted="true"
+    id="1843">
+    <guid>firebug@software.joehewitt.com</guid>
+    <name>Firebug</name>
+    <version_ranges>
+              <version_range type="incompatible">
+          <min_version>0</min_version>
+          <max_version>1.7.3</max_version>
+          <compatible_applications>
+                          <application>
+                <name>Firefox</name>
+                <application_id>1</application_id>
+                <min_version>6.0a1</min_version>
+                <max_version>*</max_version>
+                <appID>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</appID>
+              </application>
+                      </compatible_applications>
+        </version_range>
+          </version_ranges>
+</addon_compatibility>
+</searchresults>
