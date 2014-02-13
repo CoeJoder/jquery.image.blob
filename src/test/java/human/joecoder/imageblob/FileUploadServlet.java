@@ -60,6 +60,7 @@ public class FileUploadServlet extends HttpServlet {
 					fileResponse.setFileName(fileName);
 					fileResponse.setFileType(part.getContentType());
 					fileResponse.setLength(file.length());
+					fileResponse.setParams(req.getParameterMap());
 					try (FileInputStream fis = new FileInputStream(file)) {
 						fileResponse.setBase64(Base64Utils.encodeBase64(fis));
 					}

@@ -5,12 +5,13 @@ import human.joecoder.imageblob.JettyUploadServer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import junit.framework.Assert;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -35,14 +36,19 @@ public class TestImageBlob {
 	private static final int PORT = 8080;
 	private static final String URL = "http://localhost:"+PORT;
 	private static final long WEBDRIVER_TIMEOUT_SECONDS = 120L;
-	private static final File WEBDRIVER_INJECTION_JS = new File("src/webapp/js/webdriver_injection.js");
 	private static final File FIREFOX_PROFILE_DIR = new File("firefox_profile");
 	private static final File IMAGE_SOURCE_DIR = new File("src/webapp/images");
 	private static final File IMAGE_UPLOAD_DIR = new File("tmp_uploads");
+	private static final String UPLOAD_SERVLET_PATH = "/upload";
+	private static final String AJAX_JS = 
+			"webdriver(arguments[arguments.length - 1]);" + "\n" +
+			"$(arguments[0]).imageBlob().ajax('"+UPLOAD_SERVLET_PATH+"');";
+	private static final String AJAX_WITH_DATA_JS = 
+			"webdriver(arguments[arguments.length - 1]);" + "\n" +
+			"$(arguments[0]).imageBlob().formData(arguments[1]).ajax('"+UPLOAD_SERVLET_PATH+"');";
 	
 	private JettyUploadServer server = null;
 	private WebDriver driver = null;
-	private String js_webdriverInjection = null;
 	
 	////////////////////
 	// TESTNG LIFECYCLE
@@ -50,11 +56,10 @@ public class TestImageBlob {
 	
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {
-		server = new JettyUploadServer(PORT, IMAGE_UPLOAD_DIR).start();
+		server = new JettyUploadServer(PORT, IMAGE_UPLOAD_DIR, UPLOAD_SERVLET_PATH).start();
 		driver = new FirefoxDriver(new FirefoxProfile(FIREFOX_PROFILE_DIR));
 		driver.manage().timeouts().pageLoadTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 		driver.manage().timeouts().setScriptTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
-		js_webdriverInjection = FileUtils.readFileToString(WEBDRIVER_INJECTION_JS);
 	}
 	
 	@AfterClass(alwaysRun = true)
@@ -103,6 +108,24 @@ public class TestImageBlob {
 		return findElementAndSourcePairs("div.testcase.dataUri img");
 	}
 
+	@DataProvider(name = "red_dot")
+	public Object[][] red_dot() {
+		browseToForm();
+		return findElementAndSourcePairs("div#red_dot img");
+	}
+
+	@DataProvider(name = "withSpaces")
+	public Object[][] withSpaces() {
+		browseToForm();
+		return findElementAndSourcePairs("div.testcase.withSpaces img");
+	}
+
+	@DataProvider(name = "urlEncoded")
+	public Object[][] urlEncoded() {
+		browseToForm();
+		return findElementAndSourcePairs("div.testcase.urlEncoded img");
+	}
+
 	//////////////
 	// TEST CASES
 	//////////////
@@ -110,7 +133,7 @@ public class TestImageBlob {
 	@Test(description = "Test image upload content.",
 			dataProvider = "all")
 	public void testUploadContent(WebElement img, File sourceImage) throws IOException {
-		FileResponse fileResponse = uploadImageAndGetResponse(img);
+		FileResponse fileResponse = ajax(img);
 		Assert.assertTrue("Image upload was empty.\n",
 				fileResponse.getLength() > 0);
 	}
@@ -129,7 +152,7 @@ public class TestImageBlob {
 	
 	// factor
 	private void testMimeType(WebElement img, File sourceImage, String expected) throws IOException {
-		FileResponse fileResponse = uploadImageAndGetResponse(img);
+		FileResponse fileResponse = ajax(img);
 		String actual = fileResponse.getFileType();
 		Assert.assertEquals("Wrong MIME type.\n",
 				expected, actual);
@@ -138,7 +161,7 @@ public class TestImageBlob {
 	@Test(description = "Test image uploads with name attributes.",
 			dataProvider = "withNames")
 	public void testImagesWithFileNames(WebElement img, File sourceImage) throws IOException {
-		FileResponse fileResponse = uploadImageAndGetResponse(img);
+		FileResponse fileResponse = ajax(img);
 		String expected = sourceImage.getName();
 		String actual = fileResponse.getFileName();
 		Assert.assertEquals("Uploaded image had wrong filename.\n", 
@@ -148,7 +171,7 @@ public class TestImageBlob {
 	@Test(description = "Test image uploads without name attributes.",
 			dataProvider = "withoutNames")
 	public void testImagesWithoutFileNames(WebElement img, File sourceImage) throws IOException {
-		FileResponse fileResponse = uploadImageAndGetResponse(img);
+		FileResponse fileResponse = ajax(img);
 		// img element does not have a "name" attribute; it should use default name
 		String expected = ((JavascriptExecutor) driver).executeScript(
 				"return jQuery.fn.imageBlob.defaultImageName;", ArrayUtils.EMPTY_OBJECT_ARRAY).toString();
@@ -164,10 +187,23 @@ public class TestImageBlob {
 		String expected = "0xDEADBEEF";
 		((JavascriptExecutor) driver).executeScript(
 				"jQuery.fn.imageBlob.defaultImageName = '"+expected+"';", ArrayUtils.EMPTY_OBJECT_ARRAY);
-		FileResponse fileResponse = uploadImageAndGetResponse(img);
+		FileResponse fileResponse = ajax(img);
 		String actual = fileResponse.getFileName();
 		Assert.assertEquals("Uploaded image had wrong filename.\n", 
 				expected, actual);
+	}
+	
+	@Test(description = "Test image uploads with additional form data.",
+			dataProvider = "all")
+	public void testWithFormData(WebElement img, File sourceImage) throws IOException {
+		Map<String, String> formData = new HashMap<>(1);
+		String param = "FOO_PARAM";
+		String expected = "FOO_VAL";
+		formData.put(param, expected);
+		FileResponse fileResponse = ajaxWithData(img, formData);
+		Assert.assertEquals("Additional form data not found.", 
+				expected,
+				fileResponse.getParams().get(param)[0]);
 	}
 	
 	//////////////////
@@ -177,11 +213,22 @@ public class TestImageBlob {
 	private void browseToForm() {
 		driver.get(URL);
 	}
-
-	private FileResponse uploadImageAndGetResponse(WebElement img) 
+	
+	private FileResponse ajax(WebElement img) 
 			throws IOException {
 		Object obj = ((JavascriptExecutor) driver).executeAsyncScript(
-				js_webdriverInjection, img);
+				AJAX_JS, img);
+		return getResponse(obj);
+	}
+	
+	private FileResponse ajaxWithData(WebElement img, Map<String, String> formData) 
+			throws IOException {
+		Object obj = ((JavascriptExecutor) driver).executeAsyncScript(
+				AJAX_WITH_DATA_JS, img, formData);
+		return getResponse(obj);
+	}
+	
+	private FileResponse getResponse(Object obj) throws IOException {
 		// a String indicates success, a List indicates failure
 		if (obj instanceof List) {
 			Assert.fail(((List<?>)obj).iterator().next().toString());

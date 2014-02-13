@@ -1,13 +1,9 @@
 /**
- * Image Blob v0.1.  
+ * Image Blob v1.0  
  * 		A jQuery plugin for uploading embedded IMG elements, thus eliminating 
  * 		the need to download locally and insert into a form field.  This
  * 		implementation copies the image data and converts it into a Blob before
  * 		uploading to the server.
- * 
- * TODO
- * 	- test with spaces in the non-dataUri img.src path (unescape()?)
- * 		- see: http://stackoverflow.com/questions/18287213/displaying-image-name-with-html-decimal-code-and-url-encoded
  * 
  * @author Joe Nasca
  * @see		http://stackoverflow.com/a/12470362/159570
@@ -16,9 +12,10 @@
 	
 	/**
 	 * Plugin initializer.
+	 * @param mimeType	[optional] The MIME type of created blobs
 	 */
-	$.fn.imageBlob = function() {
-
+	$.fn.imageBlob = function(mimeType) {
+		
 		/**
 		 * Get a blob of the first image in the set of matched images.
 		 * 
@@ -32,6 +29,22 @@
 			var img = getFirstMatchedDomImage(this);
 			if (!img) return null;
 			return getImageBlob(img);
+		};
+		
+		/**
+		 * Set additional parameters to be sent in the AJAX request.  Chained
+		 * method.
+		 * @param obj	A hash of parameter values to send with the blob
+		 */
+		this.formData = function(obj) {
+			if (typeof obj == 'object') {
+				var fd = new FormData();
+				for (var i in obj) {
+					fd.append(i, obj[i]);
+				}
+				formData = fd;
+			}
+			return this;
 		};
 		
 		/**
@@ -64,8 +77,11 @@
 			
 			// append the blob to the FormData
 			var filename = getImageName(this);
-			ajaxSettings.data = $.fn.imageBlob.formData();
-			ajaxSettings.data.append(filename, blob, filename);
+			if (typeof formData == 'undefined') {
+				formData = new FormData();
+			}
+			formData.append(filename, blob, filename);
+			ajaxSettings.data = formData;
 			
 			// perform the AJAX request
 			if (typeof url == 'string') {
@@ -73,13 +89,77 @@
 			}
 			return $.ajax(ajaxSettings);
 		}
+
+		/////////////////////////////////////
+		// private instance members
+		/////////////////////////////////////
+		
+		var formData;
+		var DATA_URI_REGEXP = /data:(image\/[^;]+);base64,(.+)/;
+		var JPEG_REGEXP = /.*\.jpe?g/g;
+		
+		function getFirstMatchedDomImage($img) {
+			if ($img.length == 0 || 'IMG' != ($img.prop('tagName'))) {
+				return null;
+			}
+			return $img.get(0);
+		}
+		
+		function getImageName($img) {
+			var name = $img.attr('name');
+			if (typeof name == 'undefined') {
+				name = $.fn.imageBlob.defaultImageName;
+			}
+			return name;
+		}
+		
+		function getImageBlob(img) {
+		    var matches = parseDataUri(img);	// [src, mimeType, dataUri]
+		    return createBlob(matches[1], matches[2]);
+		}
+
+		function parseDataUri(img) {
+			var src = $(img).attr('src');
+			src = src.replace(/\s/g, '');	// atob() can't handle whitespace
+			var matches = src.match(DATA_URI_REGEXP);
+		    if (matches == null) {
+		    	if (typeof mimeType != 'string') {
+		    		if (src.match(JPEG_REGEXP) != null) {
+		    			mimeType = 'image/jpeg';
+		    		}
+		    		else {
+		    			mimeType = 'image/png';
+		    		}
+		    	}
+		    	var canvas = document.createElement('canvas');
+		    	var ctx = canvas.getContext('2d');
+		    	canvas.width = img.width;
+		    	canvas.height = img.height;
+		    	ctx.drawImage(img, 0, 0);
+		    	src = canvas.toDataURL(mimeType);
+		    	matches = src.match(DATA_URI_REGEXP);
+		    }
+		    return matches;
+		}
+		
+		function createBlob(mimeType, dataUri) {
+	    	var base64 = atob(dataUri);
+	        var charCodes = [];
+	        for(var i = 0; i < base64.length; i++) {
+	            charCodes.push(base64.charCodeAt(i));
+	        }
+	        return new Blob(
+	            [new Uint8Array(charCodes)],
+	            {type: mimeType}
+	        );
+	    }
 		
 		// expose the public methods
 		return this;
 	};
 	
 	/////////////////////////////////////
-	// public members (can be overridden)
+	// public configurations (can be overridden)
 	/////////////////////////////////////
 
 	// Default AJAX settings
@@ -90,74 +170,7 @@
 		type: 'POST'
 	});
 	
-	// Generates a FormData for the blob and other request parameters
-	$.fn.imageBlob.formData = function() {
-		return new FormData();
-	};
-	
 	// Default image name (used when "name" attribute is missing).
 	$.fn.imageBlob.defaultImageName = 'IMG_Upload';
-
-	/////////////////////////////////////
-	// private members
-	/////////////////////////////////////
 	
-	var DATA_URI_REGEXP = /data:(image\/[^;]+);base64,((?:.|\r|\n)*)/;
-	var JPEG_REGEXP = /.*\.jpe?g/g;
-	
-	function getFirstMatchedDomImage($img) {
-		if ($img.length == 0 || 'IMG' != ($img.prop('tagName'))) {
-			return null;
-		}
-		return $img.get(0);
-	}
-	
-	function getImageName($img) {
-		var name = $img.attr('name');
-		if (typeof name == 'undefined') {
-			name = $.fn.imageBlob.defaultImageName;
-		}
-		return name;
-	}
-	
-	function getImageBlob(img) {
-	    var matches = parseDataUri(img);	// [src, mimeType, dataUri]
-	    return createBlob(matches[1], matches[2]);
-	}
-
-	function parseDataUri(img) {
-		var src = $(img).attr('src');
-		var matches = src.match(DATA_URI_REGEXP);
-	    if (matches == null) {
-	    	var mimeType;
-	    	if (src.match(JPEG_REGEXP) != null) {
-				mimeType = 'image/jpeg';
-			}
-			else {
-				mimeType = 'image/png';
-			}
-	    	var canvas = document.createElement('canvas');
-	    	var ctx = canvas.getContext('2d');
-	    	canvas.width = img.width;
-	    	canvas.height = img.height;
-	    	ctx.drawImage(img, 0, 0);
-	    	src = canvas.toDataURL(mimeType);
-	    	matches = src.match(DATA_URI_REGEXP);
-	    }
-	    return matches;
-	}
-	
-	function createBlob(mimeType, dataUri) {
-		// atob() can't handle whitespace
-		dataUri = dataUri.replace(/\s/g, '');
-    	var base64 = atob(dataUri);
-        var charCodes = [];
-        for(var i = 0; i < base64.length; i++) {
-            charCodes.push(base64.charCodeAt(i));
-        }
-        return new Blob(
-            [new Uint8Array(charCodes)],
-            {type: mimeType}
-        );
-    }
 })(jQuery, window, document);

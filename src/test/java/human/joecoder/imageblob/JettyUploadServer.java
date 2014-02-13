@@ -25,22 +25,23 @@ public class JettyUploadServer {
 	 */
 	public static void main(String[] args) throws Exception {
 		File uploadDir = new File("tmp_uploads");
-		new JettyUploadServer(uploadDir).start().join();
+		new JettyUploadServer(uploadDir, "/upload").start().join();
 	}
 	
 	private static final int DEFAULT_PORT = 8080;
 	private static final Logger LOG = Log.getLog();
 	
 	private Server server;
+	private String servletPath;
 	private File uploadDirectory;
 
 	/**
 	 * Constructor.  Initializes and starts the Jetty server.
-	 * @param uploadPath
+	 * @param uploadDirectory
 	 * @throws Exception
 	 */
-	public JettyUploadServer(File uploadPath) throws Exception {
-		this(DEFAULT_PORT, uploadPath);
+	public JettyUploadServer(File uploadDirectory, String servletPath) throws Exception {
+		this(DEFAULT_PORT, uploadDirectory, servletPath);
 	}
 
 	/**
@@ -49,9 +50,10 @@ public class JettyUploadServer {
 	 * @param port
 	 * @throws Exception
 	 */
-	public JettyUploadServer(int port, File uploadPath) throws Exception {
-		server = new Server(port);
-		uploadDirectory = uploadPath;
+	public JettyUploadServer(int port, File uploadDirectory, String servletPath) throws Exception {
+		this.server = new Server(port);
+		this.servletPath = servletPath;
+		this.uploadDirectory = uploadDirectory;
 	}
 
 	/**
@@ -93,7 +95,7 @@ public class JettyUploadServer {
 		MultipartConfig multipartConfig = FileUploadServlet.class.getAnnotation(MultipartConfig.class);
 		MultipartConfigElement multipartConfigElm = new MultipartConfigElement(multipartConfig);
 		uploadServletHolder.getRegistration().setMultipartConfig(multipartConfigElm);
-		context.addServlet(uploadServletHolder, "/upload");
+		context.addServlet(uploadServletHolder, servletPath);
 		
 		LOG.info("Serving file upload servlet at \"/upload\"");
         

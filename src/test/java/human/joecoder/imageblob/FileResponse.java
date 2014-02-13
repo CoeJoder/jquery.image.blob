@@ -1,5 +1,7 @@
 package human.joecoder.imageblob;
 
+import java.util.Map;
+
 /**
  * Model for AJAX file data response.
  * @author joe
@@ -8,6 +10,7 @@ public class FileResponse {
 	
     private String fileName;
     private String fileType;
+    private Map<String, String[]> params;
     private byte[] base64;
     private long length;
     
@@ -17,6 +20,14 @@ public class FileResponse {
     public FileResponse() {
     	// for bean construction
     }
+
+	public Map<String, String[]> getParams() {
+		return params;
+	}
+
+	public void setParams(Map<String, String[]> params) {
+		this.params = params;
+	}
 
 	public String getFileType() {
 		return fileType;
