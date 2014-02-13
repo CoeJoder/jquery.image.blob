@@ -20,6 +20,12 @@ console.log('size=' + blob.size);
 console.log('type=' + blob.type);
 ```
 
+Create an image blob with the specified MIME type:
+
+```javascript
+var blob = $('img').imageBlob('image/jpeg').blob();
+```
+
 Create an image blob and upload it:
 
 ```javascript
@@ -33,12 +39,6 @@ Create an image blob and upload it along with other params:
 $('img').imageBlob()
     .formData({foo : 'bar'})
     .ajax('/upload');
-```
-
-Create an image blob with the specified MIME type:
-
-```javascript
-var blob = $('img').imageBlob('image/jpeg').blob();
 ```
 
 ## Configuration
