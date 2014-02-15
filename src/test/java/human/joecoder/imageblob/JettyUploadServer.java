@@ -25,7 +25,7 @@ public class JettyUploadServer {
 	 */
 	public static void main(String[] args) throws Exception {
 		File uploadDir = new File("tmp_uploads");
-		new JettyUploadServer(uploadDir, "/upload").start().join();
+		new JettyUploadServer(new File("src/test/webapp"), uploadDir, "/upload").start().join();
 	}
 	
 	private static final int DEFAULT_PORT = 8080;
@@ -33,6 +33,7 @@ public class JettyUploadServer {
 	
 	private Server server;
 	private String servletPath;
+	private File resourceBase;
 	private File uploadDirectory;
 
 	/**
@@ -40,8 +41,8 @@ public class JettyUploadServer {
 	 * @param uploadDirectory
 	 * @throws Exception
 	 */
-	public JettyUploadServer(File uploadDirectory, String servletPath) throws Exception {
-		this(DEFAULT_PORT, uploadDirectory, servletPath);
+	public JettyUploadServer(File resourceBase, File uploadDirectory, String servletPath) throws Exception {
+		this(DEFAULT_PORT, resourceBase, uploadDirectory, servletPath);
 	}
 
 	/**
@@ -50,8 +51,9 @@ public class JettyUploadServer {
 	 * @param port
 	 * @throws Exception
 	 */
-	public JettyUploadServer(int port, File uploadDirectory, String servletPath) throws Exception {
+	public JettyUploadServer(int port, File resourceBase, File uploadDirectory, String servletPath) throws Exception {
 		this.server = new Server(port);
+		this.resourceBase = resourceBase;
 		this.servletPath = servletPath;
 		this.uploadDirectory = uploadDirectory;
 	}
@@ -101,7 +103,7 @@ public class JettyUploadServer {
         
         // static default servlet for root content (per servlet spec; must be last)
         ServletHolder defaultServlet = new ServletHolder("default", DefaultServlet.class);
-        defaultServlet.setInitParameter("resourceBase", "./src/webapp");
+        defaultServlet.setInitParameter("resourceBase", resourceBase.getAbsolutePath());
         defaultServlet.setInitParameter("dirAllowed", "true");
         context.addServlet(defaultServlet, "/");
         

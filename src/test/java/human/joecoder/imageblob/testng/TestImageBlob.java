@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import junit.framework.Assert;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -37,7 +36,8 @@ public class TestImageBlob {
 	private static final String URL = "http://localhost:"+PORT;
 	private static final long WEBDRIVER_TIMEOUT_SECONDS = 120L;
 	private static final File FIREFOX_PROFILE_DIR = new File("firefox_profile");
-	private static final File IMAGE_SOURCE_DIR = new File("src/webapp/images");
+	private static final File RESOURCE_BASE = new File("src/test/webapp");
+	private static final File IMAGE_SOURCE_DIR = new File(RESOURCE_BASE, "/images");
 	private static final File IMAGE_UPLOAD_DIR = new File("tmp_uploads");
 	private static final String UPLOAD_SERVLET_PATH = "/upload";
 	private static final String AJAX_JS = 
@@ -56,7 +56,7 @@ public class TestImageBlob {
 	
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {
-		server = new JettyUploadServer(PORT, IMAGE_UPLOAD_DIR, UPLOAD_SERVLET_PATH).start();
+		server = new JettyUploadServer(PORT, RESOURCE_BASE, IMAGE_UPLOAD_DIR, UPLOAD_SERVLET_PATH).start();
 		driver = new FirefoxDriver(new FirefoxProfile(FIREFOX_PROFILE_DIR));
 		driver.manage().timeouts().pageLoadTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
 		driver.manage().timeouts().setScriptTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
@@ -134,8 +134,8 @@ public class TestImageBlob {
 			dataProvider = "all")
 	public void testUploadContent(WebElement img, File sourceImage) throws IOException {
 		FileResponse fileResponse = ajax(img);
-		Assert.assertTrue("Image upload was empty.\n",
-				fileResponse.getLength() > 0);
+		Assert.assertTrue(fileResponse.getLength() > 0,
+				"Image upload was empty.\n");
 	}
 
 	@Test(description = "Test PNG upload MIME type.",
@@ -154,8 +154,8 @@ public class TestImageBlob {
 	private void testMimeType(WebElement img, File sourceImage, String expected) throws IOException {
 		FileResponse fileResponse = ajax(img);
 		String actual = fileResponse.getFileType();
-		Assert.assertEquals("Wrong MIME type.\n",
-				expected, actual);
+		Assert.assertEquals(expected, actual,
+				"Wrong MIME type.\n");
 	}
 
 	@Test(description = "Test image uploads with name attributes.",
@@ -164,8 +164,8 @@ public class TestImageBlob {
 		FileResponse fileResponse = ajax(img);
 		String expected = sourceImage.getName();
 		String actual = fileResponse.getFileName();
-		Assert.assertEquals("Uploaded image had wrong filename.\n", 
-				expected, actual);
+		Assert.assertEquals(expected, actual,
+				"Uploaded image had wrong filename.\n");
 	}
 	
 	@Test(description = "Test image uploads without name attributes.",
@@ -176,8 +176,8 @@ public class TestImageBlob {
 		String expected = ((JavascriptExecutor) driver).executeScript(
 				"return jQuery.fn.imageBlob.defaultImageName;", ArrayUtils.EMPTY_OBJECT_ARRAY).toString();
 		String actual = fileResponse.getFileName();
-		Assert.assertEquals("Uploaded image had wrong filename.\n", 
-				expected, actual);
+		Assert.assertEquals(expected, actual,
+				"Uploaded image had wrong filename.\n");
 	}
 	
 	@Test(description = "Test image uploads without name attributes, overriding the default name.",
@@ -189,8 +189,8 @@ public class TestImageBlob {
 				"jQuery.fn.imageBlob.defaultImageName = '"+expected+"';", ArrayUtils.EMPTY_OBJECT_ARRAY);
 		FileResponse fileResponse = ajax(img);
 		String actual = fileResponse.getFileName();
-		Assert.assertEquals("Uploaded image had wrong filename.\n", 
-				expected, actual);
+		Assert.assertEquals(expected, actual,
+				"Uploaded image had wrong filename.\n");
 	}
 	
 	@Test(description = "Test image uploads with additional form data.",
@@ -201,9 +201,10 @@ public class TestImageBlob {
 		String expected = "FOO_VAL";
 		formData.put(param, expected);
 		FileResponse fileResponse = ajaxWithData(img, formData);
-		Assert.assertEquals("Additional form data not found.", 
+		Assert.assertEquals(
 				expected,
-				fileResponse.getParams().get(param)[0]);
+				fileResponse.getParams().get(param)[0],
+				"Additional form data not found.");
 	}
 	
 	//////////////////

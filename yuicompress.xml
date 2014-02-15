@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="ImageBlob" basedir=".">
+	<target name="compressJS">
+		<property name="SRC" value="${basedir}/src/test/webapp/js"/>
+		<property name="DEV_SRC" value="${SRC}/jquery-image-blob.js"/>
+		<property name="TEST_SRC" value="${SRC}/jquery-image-blob.min.js"/>
+		<property name="PROD_SRC" value="${basedir}/jquery-image-blob.min.js"/>
+		<!-- minify -->
+		<java jar="${yuicompressor.jar}" fork="true" failonerror="true" output="yuicompressor.log">
+			<arg value="--verbose"/>
+			<arg value="${DEV_SRC}"/>
+			<arg line="-o ${TEST_SRC}"/>
+			<arg line="--charset utf-8"/>
+		</java>
+		<!-- copy to prod -->
+		<copy file="${TEST_SRC}" tofile="${PROD_SRC}"/>
+	</target>
+</project>

@@ -1,4 +1,4 @@
-# jquery.image.blob
+# jquery-image-blob
 
 A simple jQuery plugin for uploading embedded images, eliminating the need to manually download and upload via form.  The image is converted into a Blob and uploaded as a file.
 
@@ -7,7 +7,7 @@ A simple jQuery plugin for uploading embedded images, eliminating the need to ma
 Add this line *after* the jQuery library.
 
 ```html
-<script src="/path/to/jquery.image.blob.js"></script>
+<script src="/path/to/jquery-image-blob.min.js"></script>
 ```
 
 ## Usage
