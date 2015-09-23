@@ -1,0 +1,26 @@
+{
+  "name": "jquery.image.blob",
+  "version": "0.0.1",
+  "homepage": "https://github.com/streetlogics/jquery.image.blob",
+  "authors": [
+    "CoeJoder"
+  ],
+  "description": "A simple jQuery plugin for uploading embedded images, eliminating the need to manually download and upload via form. The image is converted into a Blob and uploaded as a file.",
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "main": "./jquery-image-blob.min.js",
+  "keywords": [
+    "jquery",
+    "image",
+    "blob"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
