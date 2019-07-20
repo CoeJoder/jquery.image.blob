@@ -10,15 +10,36 @@
 
 	<properties>
 		<java.version>1.7</java.version>
-		<jetty.version>9.1.1.v20140108</jetty.version>
-		<jackson.version>2.3.1</jackson.version>
-		<selenium.version>2.39.0</selenium.version>
-		<testng.version>6.8.7</testng.version>
+		<commons.lang3.version>3.9</commons.lang3.version>
+		<commons.io.version>2.6</commons.io.version>
+		<commons.codec.version>1.12</commons.codec.version>
+		<jetty.version>9.4.19.v20190610</jetty.version>
+		<jackson.version>2.9.9.1</jackson.version>
+		<selenium.version>3.141.59</selenium.version>
+		<testng.version>6.14.3</testng.version>
 		<yuicompressor.version>2.4.7</yuicompressor.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
+		<!-- commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+		<!-- commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+		<!-- commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons.codec.version}</version>
+		</dependency>
 		<!-- Jetty -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -61,7 +82,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -70,6 +91,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
