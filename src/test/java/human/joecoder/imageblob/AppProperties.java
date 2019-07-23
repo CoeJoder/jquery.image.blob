@@ -22,6 +22,7 @@ public class AppProperties {
     public static final String PROPERTIES_FILE = "app.properties";
     private static final String KEY_FIREFOX_DRIVER = "firefox_driver";
     private static final String KEY_CHROME_DRIVER = "chrome_driver";
+    private static final String KEY_BROWSER = "browser";
 
     private static AppProperties INSTANCE = null;
 
@@ -58,6 +59,10 @@ public class AppProperties {
 
     public String getChromeDriver() {
         return prop(KEY_CHROME_DRIVER);
+    }
+
+    public Browser getBrowser() {
+        return Browser.fromString(prop(KEY_BROWSER));
     }
 
     private String prop(String key) {
