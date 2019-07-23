@@ -1,5 +1,6 @@
 package human.joecoder.imageblob;
 
+import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.EnumSet;
 
 /**
  * Browser enum.  Handles the initialization of the underlying {@link WebDriver} object and provides some utility
@@ -22,6 +24,15 @@ public enum Browser {
 
     private static final String DRIVER_PATH_NOT_SET = "WebDriver binary path not set in " + AppProperties.PROPERTIES_FILE;
     private static final String PLATFORM_NOT_SUPPORTED = "This O/S or architecture has no WebDriver distribution available.";
+
+    public static Browser fromString(String str) {
+        for (Browser browser : EnumSet.allOf(Browser.class)) {
+            if (browser.name().equalsIgnoreCase(str)) {
+                return browser;
+            }
+        }
+        throw new InvalidArgumentException("Browser not recognized: " + str);
+    }
 
     private WebDriver driver = null;
     private boolean headless = true;

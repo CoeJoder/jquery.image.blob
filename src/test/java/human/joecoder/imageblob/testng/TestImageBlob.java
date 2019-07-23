@@ -2,6 +2,7 @@ package human.joecoder.imageblob.testng;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import human.joecoder.imageblob.AppProperties;
 import human.joecoder.imageblob.Browser;
 import human.joecoder.imageblob.FileResponse;
 import human.joecoder.imageblob.JettyUploadServer;
@@ -58,7 +59,7 @@ public class TestImageBlob {
                 .withServletPath(UPLOAD_SERVLET_PATH)
                 .build()
                 .start();
-        driver = Browser.CHROME.asHeadless(true).initialize()
+        driver = AppProperties.getInstance().getBrowser().asHeadless(true).initialize()
                 .getDriver();
         driver.manage().timeouts().pageLoadTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(WEBDRIVER_TIMEOUT_SECONDS, TimeUnit.SECONDS);
