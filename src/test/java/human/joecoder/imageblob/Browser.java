@@ -24,7 +24,7 @@ public enum Browser {
     private static final String PLATFORM_NOT_SUPPORTED = "This O/S or architecture has no WebDriver distribution available.";
 
     private WebDriver driver = null;
-    private boolean headless = false;
+    private boolean headless = true;
 
     /**
      * Launches the browser driver.
