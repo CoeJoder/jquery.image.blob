@@ -1,7 +1,8 @@
 *.class
-
-# Package Files #
 *.jar
 *.war
 *.ear
 /target
+/drivers/chromedriver*
+/drivers/geckodriver*
+yuicompressor.log
