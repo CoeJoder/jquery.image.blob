@@ -13,8 +13,6 @@ import java.util.Properties;
 
 /**
  * Wrapper for the app.properties file.
- *
- * @author Joe Nasca
  */
 public class AppProperties {
 

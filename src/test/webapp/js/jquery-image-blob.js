@@ -4,8 +4,6 @@
  *        the need to download locally and insert into a form field.  This
  *        implementation copies the image data and converts it into a Blob before
  *        uploading to the server.
- *
- * @author Joe Nasca
  * @see http://stackoverflow.com/a/12470362/159570
  */
 (function ($, window, document, undefined) {

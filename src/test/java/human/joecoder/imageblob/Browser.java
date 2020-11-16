@@ -16,8 +16,6 @@ import java.util.EnumSet;
 /**
  * Browser enum.  Handles the initialization of the underlying {@link WebDriver} object and provides some utility
  * methods.  Operates headless by default, but can be configured with {@link #asHeadless(boolean)}.
- *
- * @author Joe Nasca
  */
 public enum Browser {
     CHROME, FIREFOX;

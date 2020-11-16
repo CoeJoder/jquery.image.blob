@@ -55,6 +55,3 @@ If the image's `name` attribute is missing, a default filename is used:
 ```javascript
 $.fn.imageBlob.defaultImageName = 'IMG_Upload';
 ```
-
-## Author
-Joe Nasca
