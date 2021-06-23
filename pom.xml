@@ -13,7 +13,7 @@
 		<commons.lang3.version>3.9</commons.lang3.version>
 		<commons.io.version>2.6</commons.io.version>
 		<commons.codec.version>1.12</commons.codec.version>
-		<jetty.version>9.4.19.v20190610</jetty.version>
+		<jetty.version>9.4.41.v20210516</jetty.version>
 		<jackson.version>2.9.9.2</jackson.version>
 		<selenium.version>3.141.59</selenium.version>
 		<testng.version>6.14.3</testng.version>
